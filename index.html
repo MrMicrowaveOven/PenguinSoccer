@@ -10,7 +10,7 @@
     <title>Penguin Soccer</title>
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { display: block; margin: 0 auto; }
+    	canvas { display: block; margin: 0 auto; background: #eee;}
       /*background:url(lab.jpg); background-size: 100% 100%; */
     </style>
 
@@ -25,5 +25,42 @@
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
 
+
+  var rightPressed = false;
+  var leftPressed = false;
+  var upPressed = false;
+  var downPressed = false;
+  
+  setInterval(draw, 10);
+
+  var penguinHeight = 10;
+  var penguinWidth = 10;
+  var penguinStartX = (canvas.width-penguinWidth)/2;
+  var penguinStartY = (canvas.height-penguinHeight)/2;
+
+  function drawPenguin() {
+    ctx.beginPath();
+    ctx.rect(penguinStartX, penguinStartY, penguinWidth, penguinHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  var x = canvas.width/2;
+  var y = canvas.height-30;
+
+  var dx = 2;
+  var dy = -2;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+    x += dx;
+    y += dy;
+  }
 
 </script>
